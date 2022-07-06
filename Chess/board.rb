@@ -18,7 +18,7 @@ class Board
         @rows.each.with_index do |array, idx| 
             if setup_rows.include?(idx)
                 array.map!.with_index do |ele, idx2| 
-                    Piece.new([idx, idx2], "placeholder")
+                    Piece.new([idx, idx2], "placeholder", @rows)
                 end
             else
                 array.map!.with_index do |ele, idx2| 
