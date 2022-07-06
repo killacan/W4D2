@@ -10,7 +10,7 @@ module Slidable
         current_pos[row][col]
         horizontal_pos = [[1,0], [-1,0],[0,1],[0,-1]]
         
-#tuna
+
         (-7 .. 7).each do |i|
             (-7 .. 7).each do |j|
                 new_row = i + row
