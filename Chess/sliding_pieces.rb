@@ -35,7 +35,7 @@ module Slidable
         moves= []
         current_x, current_y = self.current_pos
 
-        while valid_pos?(dx, dy) && self[dx,dy].is_a?(Null)
+        while self.valid_pos?(dx, dy) && self[dx,dy].is_a?(Null)
             # if previous spot has an enemy, stop, if less than start pos, dont check. 
             if self.color != self.board[current_x][current_y]
                 moves << [current_x, current_y]
@@ -69,7 +69,6 @@ include Slidable
 
     def move_dirs
         horizonal_dirs
-        end
     end 
 
     def symbol

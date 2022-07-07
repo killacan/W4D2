@@ -1,5 +1,8 @@
 require_relative  "piece"
 require_relative "null_pieces"
+require_relative "sliding_pieces"
+require_relative "stepping_pieces"
+require_relative "pawn"
 require "byebug"
 
 #make a new to_s method, so that we dont print every detail. 
@@ -13,12 +16,26 @@ class Board
     end
 
     def builder
-        setup_rows = [0,1,6,7]
+        setup_rows = [0,7]
+        pawn_white = 1
+        pawn_black = 6
+
+        # rows[0,0] = Rook.new([0,0], "white", @rows)
+
 
         @rows.each.with_index do |array, idx| 
-            if setup_rows.include?(idx)
-                array.map!.with_index do |ele, idx2| 
-                    Piece.new([idx, idx2], "placeholder", @rows)
+            # if setup_rows.include?(idx)
+            #     array.map!.with_index do |ele, idx2| 
+            #         Piece.new([idx, idx2], @rows)
+            #     end
+            if pawn_white == idx
+                array.map!.with_index do |ele, idx2|
+                    Pawn.new([idx, idx2], "white", @rows)
+                end
+            
+            elsif pawn_black == idx
+                array.map!.with_index do |ele, idx2|
+                    Pawn.new([idx, idx2], "black", @rows)
                 end
             else
                 array.map!.with_index do |ele, idx2| 
